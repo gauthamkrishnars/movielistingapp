@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, alpha } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
-import MovieCard, { MovieCardSkeleton } from '../components/MovieCard';
+import MovieCard from '../components/MovieCard';
 import MovieModal from '../components/MovieModal';
 import Loader from '../components/Loader';
 import { fetchFromOMDb } from '../utils/fetchFromAPI';

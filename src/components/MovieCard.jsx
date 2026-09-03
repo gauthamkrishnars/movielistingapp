@@ -7,12 +7,10 @@ import {
   Typography,
   Box,
   IconButton,
-  Skeleton,
   alpha,
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import StarIcon from '@mui/icons-material/Star';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 
 const PLACEHOLDER_POSTER = 'https://via.placeholder.com/300x450/1a1a2e/55556a?text=No+Poster';
@@ -92,7 +90,7 @@ const MovieCard = ({ movie, isFavorite, onToggleFavorite }) => {
                 fontSize: '0.8rem',
               }}
             >
-              View Details →
+              View Details
             </Typography>
           </Box>
 
@@ -202,25 +200,16 @@ const MovieCard = ({ movie, isFavorite, onToggleFavorite }) => {
 
 export const MovieCardSkeleton = () => (
   <Box>
-    <Skeleton
-      variant="rounded"
+    <Box
       sx={{
         width: '100%',
         aspectRatio: '2/3',
         borderRadius: '12px',
-        bgcolor: 'rgba(255,255,255,0.05)',
+        backgroundColor: 'rgba(255,255,255,0.05)',
       }}
     />
-    <Skeleton
-      variant="text"
-      sx={{ bgcolor: 'rgba(255,255,255,0.06)', width: '80%', mt: 1 }}
-      height={20}
-    />
-    <Skeleton
-      variant="text"
-      sx={{ bgcolor: 'rgba(255,255,255,0.04)', width: '50%' }}
-      height={16}
-    />
+    <Box sx={{ height: 20, mt: 1, width: '80%', borderRadius: 1, backgroundColor: 'rgba(255,255,255,0.06)' }} />
+    <Box sx={{ height: 16, mt: 0.5, width: '50%', borderRadius: 1, backgroundColor: 'rgba(255,255,255,0.04)' }} />
   </Box>
 );
 

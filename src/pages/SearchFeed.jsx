@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Typography, alpha, useTheme } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import MovieCard from '../components/MovieCard';
 import MovieModal from '../components/MovieModal';
@@ -13,7 +13,6 @@ const SearchFeed = ({ isFavorite, toggleFavorite }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const theme = useTheme();
 
   useEffect(() => {
     const fetchResults = async () => {
@@ -73,7 +72,7 @@ const SearchFeed = ({ isFavorite, toggleFavorite }) => {
                 WebkitTextFillColor: 'transparent',
               }}
             >
-              "{searchTerm}"
+              &quot;{searchTerm}&quot;
             </Box>
           </Typography>
           {!loading && !error && (

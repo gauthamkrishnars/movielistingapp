@@ -4,16 +4,10 @@ import {
   Typography,
   IconButton,
   Divider,
-  useMediaQuery,
-  useTheme,
-  alpha,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
 const PrivacyPolicyModal = ({ open, onClose }) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
   if (!open) return null;
 
   return (
