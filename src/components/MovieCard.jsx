@@ -13,7 +13,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 
-const PLACEHOLDER_POSTER = 'https://via.placeholder.com/300x450/1a1a2e/55556a?text=No+Poster';
+const PLACEHOLDER_POSTER = 'data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27300%27 height=%27450%27 viewBox=%270 0 300 450%27%3E%3Crect fill=%27%231a1a2e%27 width=%27300%27 height=%27450%27/%3E%3Ctext x=%27150%27 y=%27210%27 font-family=%27sans-serif%27 font-size=%2716%27 fill=%27%2355556a%27 text-anchor=%27middle%27%3ENo Poster%3C/text%3E%3Ctext x=%27150%27 y=%27240%27 font-family=%27sans-serif%27 font-size=%2740%27 fill=%27%23333350%27 text-anchor=%27middle%27%3E%F0%9F%8E%AC%3C/text%3E%3C/svg%3E';
 
 const MovieCard = ({ movie, isFavorite, onToggleFavorite }) => {
   if (!movie) return null;

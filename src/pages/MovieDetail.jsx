@@ -22,7 +22,7 @@ import Loader from '../components/Loader';
 import MovieCard from '../components/MovieCard';
 import { fetchFromOMDb } from '../utils/fetchFromAPI';
 
-const PLACEHOLDER_POSTER = 'https://via.placeholder.com/400x600/1a1a2e/55556a?text=No+Poster';
+const PLACEHOLDER_POSTER = 'data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27600%27 viewBox=%270 0 400 600%27%3E%3Crect fill=%27%231a1a2e%27 width=%27400%27 height=%27600%27/%3E%3Ctext x=%27200%27 y=%27280%27 font-family=%27sans-serif%27 font-size=%2718%27 fill=%27%2355556a%27 text-anchor=%27middle%27%3ENo Poster%3C/text%3E%3Ctext x=%27200%27 y=%27320%27 font-family=%27sans-serif%27 font-size=%2750%27 fill=%27%23333350%27 text-anchor=%27middle%27%3E%F0%9F%8E%AC%3C/text%3E%3C/svg%3E';
 
 const MovieDetail = ({ isFavorite, toggleFavorite }) => {
   const { id } = useParams();
