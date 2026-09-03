@@ -6,6 +6,8 @@ import MovieModal from '../components/MovieModal';
 import Loader from '../components/Loader';
 import { fetchFromOMDb } from '../utils/fetchFromAPI';
 
+const SEARCH_TERMS = ['action', 'comedy', 'drama', 'sci-fi', 'horror', 'thriller', 'romance', 'adventure', 'animation', 'fantasy'];
+
 const Home = ({ isFavorite, toggleFavorite }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,8 +19,23 @@ const Home = ({ isFavorite, toggleFavorite }) => {
       setLoading(true);
       setError(null);
       try {
-        const data = await fetchFromOMDb({ s: 'batman', type: 'movie' });
-        setMovies(data.Search || []);
+        // Fetch from multiple genres in parallel
+        const results = await Promise.all(
+          SEARCH_TERMS.map((term) =>
+            fetchFromOMDb({ s: term, type: 'movie' }).catch(() => ({ Search: [] }))
+          )
+        );
+
+        // Flatten and deduplicate by imdbID
+        const allMovies = results.flatMap((r) => r.Search || []);
+        const seen = new Set();
+        const unique = allMovies.filter((m) => {
+          if (seen.has(m.imdbID)) return false;
+          seen.add(m.imdbID);
+          return true;
+        });
+
+        setMovies(unique);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -82,7 +99,7 @@ const Home = ({ isFavorite, toggleFavorite }) => {
 
       {/* Grid */}
       {loading ? (
-        <Loader count={10} />
+        <Loader count={20} />
       ) : (
         <Box
           sx={{
