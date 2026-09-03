@@ -20,7 +20,8 @@ const SearchFeed = ({ isFavorite, toggleFavorite }) => {
       setError(null);
       try {
         const data = await fetchFromOMDb({ s: searchTerm, type: 'movie' });
-        setMovies(data.Search || []);
+        const filtered = (data.Search || []).filter((m) => m.Poster && m.Poster !== 'N/A');
+        setMovies(filtered);
       } catch (err) {
         setError(err.message);
         setMovies([]);

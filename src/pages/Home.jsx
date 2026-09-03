@@ -26,11 +26,12 @@ const Home = ({ isFavorite, toggleFavorite }) => {
           )
         );
 
-        // Flatten and deduplicate by imdbID
+        // Flatten, deduplicate, and remove movies without posters
         const allMovies = results.flatMap((r) => r.Search || []);
         const seen = new Set();
         const unique = allMovies.filter((m) => {
           if (seen.has(m.imdbID)) return false;
+          if (!m.Poster || m.Poster === 'N/A') return false;
           seen.add(m.imdbID);
           return true;
         });
